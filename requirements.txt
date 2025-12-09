@@ -1,5 +1,10 @@
-groq==0.11.0
-pandas==2.1.4
-numpy==1.26.2
-python-dotenv==1.0.0
-rich==13.7.0
+crewai[tools]
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-groq>=0.2.0
+groq>=0.20.0
+pandas>=2.1.0
+numpy>=1.26.0
+python-dotenv>=1.0.0
+rich>=13.7.0
+pydantic>=2.0.0

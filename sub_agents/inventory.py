@@ -7,5 +7,6 @@ inventory_agent = Agent(
     backstory="You are responsible for warehouse stocks.",
     verbose=True,
     llm=groq_llm,
-    tools=[stock_tool]
+    tools=[stock_tool],
+    allow_delegation=False 
 )

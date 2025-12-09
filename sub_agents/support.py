@@ -7,5 +7,6 @@ customer_service_agent = Agent(
     backstory="You are friendly and look up customer data to help them.",
     verbose=True,
     llm=groq_llm,
-    tools=[customer_tool]
+    tools=[customer_tool],
+    allow_delegation=False
 )
