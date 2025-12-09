@@ -21,7 +21,7 @@ class RetailDataLoader:
         item = self.df[self.df['Description'].str.contains(product_name, case=False, na=False)].head(1)
         if item.empty: return "Product not found."
         total_sold = self.df[self.df['Description'] == item.iloc[0]['Description']]['Quantity'].sum()
-        current_stock = max(0, 2000 - total_sold)  # Mock initial stock, prevent negative
+        current_stock = max(0, 2000 - total_sold)
         status = "CRITICAL LOW" if current_stock < 100 else "HEALTHY"
         return f"Product: {item.iloc[0]['Description']} | In Stock: {current_stock} ({status})"
 

@@ -1,23 +1,23 @@
 import os
 from dotenv import load_dotenv
 
-# Load environment variables FIRST
+# Load environment variables first
 load_dotenv()
 
 from crewai import Crew, Task, Process, Agent
 from tools import groq_llm
 
-# Import Agents from their specific files
+
 from sub_agents.inventory import inventory_agent
 from sub_agents.pricing import pricing_agent
 from sub_agents.support import customer_service_agent
 from sub_agents.supply import supply_chain_agent
 from sub_agents.forecasting import forecasting_agent
 
-# Get user input for product analysis
+
 product_name = input("What product would you like to analyze? ")
 
-# 1. Define Tasks with explicit agent assignment
+
 task_inv = Task(
     description=f"Check stock levels for '{product_name}' and provide the current stock status with quantity and health indicators.",
     expected_output="A detailed stock status report including current quantity, stock health (CRITICAL LOW/HEALTHY), and any inventory alerts or recommendations.",
@@ -36,7 +36,7 @@ task_fc = Task(
     agent=forecasting_agent
 )
 
-# 2. Assemble Crew with explicit manager_llm
+#  Assemble Crew with explicit manager_llm
 crew = Crew(
     agents=[inventory_agent, pricing_agent, forecasting_agent],
     tasks=[task_inv, task_price, task_fc],
@@ -45,7 +45,7 @@ crew = Crew(
     manager_llm=groq_llm,  # Force Groq for crew manager
 )
 
-# 3. Run
+#  Run
 if __name__ == "__main__":
     print("Starting Modular Agents with Groq...")
     try:
