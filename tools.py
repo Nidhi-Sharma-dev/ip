@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 load_dotenv()
 
-groq_llm = LLM(model="groq/llama3-70b-8192", api_key=os.getenv("GROQ_API_KEY"))
+groq_llm = LLM(model="groq/llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY"))
 
 
 # Define input schema

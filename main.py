@@ -14,22 +14,25 @@ from sub_agents.support import customer_service_agent
 from sub_agents.supply import supply_chain_agent
 from sub_agents.forecasting import forecasting_agent
 
+# Get user input for product analysis
+product_name = input("What product would you like to analyze? ")
+
 # 1. Define Tasks with explicit agent assignment
 task_inv = Task(
-    description="Check stock for 'WHITE METAL LANTERN'.",
-    expected_output="Stock status.",
+    description=f"Check stock levels for '{product_name}' and provide the current stock status with quantity and health indicators.",
+    expected_output="A detailed stock status report including current quantity, stock health (CRITICAL LOW/HEALTHY), and any inventory alerts or recommendations.",
     agent=inventory_agent
 )
 
 task_price = Task(
-    description="Check price history for 'WHITE METAL LANTERN'.",
-    expected_output="Price summary.",
+    description=f"Analyze price history for '{product_name}' and provide comprehensive pricing information.",
+    expected_output="A price analysis report with average price, maximum price, price trends, and pricing recommendations.",
     agent=pricing_agent
 )
 
 task_fc = Task(
-    description="Forecast demand for 'WHITE METAL LANTERN'.",
-    expected_output="Prediction.",
+    description=f"Forecast demand for '{product_name}' and predict future sales trends.",
+    expected_output="A demand forecast report with predicted units for next month, trend analysis, and sales projections.",
     agent=forecasting_agent
 )
 
